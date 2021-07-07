@@ -3,7 +3,7 @@ import React from "react";
 function ProductDetail(props) {
   const product = props.pro;
   return (
-    <div className="App">
+    <div className="card">
       <img src={product.image} alt={product.name} />
       <h1>{product.name}</h1>
       <p>Details : {product.description}</p>
