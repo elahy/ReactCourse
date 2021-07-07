@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "./Component/Product";
 import ProductDetail from "./Component/ProductDetail";
+import LoadingScreen from "./Component/LoadingScreen";
 
 function App() {
-  const [products, setProducts] = useState([
+  const [products] = useState([
     {
       _id: 1,
       name: "Hello Kitty",
@@ -59,26 +60,38 @@ function App() {
       selected: false,
     },
   ]);
-  const [button, setButton] = useState(["See Details"]);
-  const buttonHandler = (e) => {
-    console.log("button Clicked from", e.name);
-    const newProduct = {
-      ...e,
-      selected: true,
-    };
-    const newProducts = [...products, newProduct];
-    setProducts(newProducts);
-    setButton(["Hide Details"]);
-    console.log("button handler", e.selected);
-    <ProductDetail {...e} />;
+  const [button, setButton] = useState(true);
+  const [arrIndx, SetarrIndx] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 4000);
+  }, [button]);
+
+  const showBtnHandler = (b) => {
+    setButton(false);
+    setLoading(true);
+    SetarrIndx(b - 1);
+  };
+  const hideBtnHandler = () => {
+    setLoading(true);
+    setButton(true);
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Product pro={products} />
-      </header>
-    </div>
+    <>
+      {loading === false ? (
+        <div className="App">
+          {button ? (
+            <Product pro={products} btn={showBtnHandler} />
+          ) : (
+            <ProductDetail pro={products[arrIndx]} btn={hideBtnHandler} />
+          )}
+        </div>
+      ) : (
+        <LoadingScreen />
+      )}
+    </>
   );
 }
 

@@ -1,13 +1,17 @@
 import React from "react";
 
 function ProductDetail(props) {
-  console.log(props);
+  const product = props.pro;
   return (
-    <div>
-      <h1>{props.name}</h1>
-      <p>Details : {props.description}</p>
-      <h2>Price : {props.price}</h2>
-      <h3>Category : {props.category}</h3>
+    <div className="App">
+      <img src={product.image} alt={product.name} />
+      <h1>{product.name}</h1>
+      <p>Details : {product.description}</p>
+      <h2>Price : {product.price}</h2>
+      <h3>Category : {product.category}</h3>
+      <button onClick={props.btn} className="Button">
+        Back to Homepage
+      </button>
     </div>
   );
 }
