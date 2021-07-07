@@ -4,10 +4,10 @@ function ProductDetail(props) {
   console.log(props);
   return (
     <div>
-      {/* <h1>{props.name}</h1>
-      <p>{props.description}</p>
-      <h4>{props.price}</h4> */}
-      Hi there
+      <h1>{props.name}</h1>
+      <p>Details : {props.description}</p>
+      <h2>Price : {props.price}</h2>
+      <h3>Category : {props.category}</h3>
     </div>
   );
 }
