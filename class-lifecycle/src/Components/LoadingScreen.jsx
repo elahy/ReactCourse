@@ -4,10 +4,10 @@ import "./loading.css";
 function LoadingScreen() {
   return (
     <>
-      <div class="container">
-        <div class="dot dot-1"></div>
-        <div class="dot dot-2"></div>
-        <div class="dot dot-3"></div>
+      <div className="container">
+        <div className="dot dot-1"></div>
+        <div className="dot dot-2"></div>
+        <div className="dot dot-3"></div>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
