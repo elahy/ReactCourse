@@ -17,7 +17,7 @@ function ProductList(props) {
             }}
             className="Button"
           >
-            Show Details
+            View Details
           </button>
         </div>
       ))}

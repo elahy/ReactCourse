@@ -23,7 +23,7 @@ h2 {
 
 img {
   border-radius: 0.5rem;
-  max-width: 29rem;
+  max-width: 20rem;
   width: 100%;
 }
 
@@ -41,19 +41,19 @@ img {
   border: 1px solid #4c5270;
   display: inline-block;
   cursor: pointer;
-  color: #333333;
+  color: #000000;
   font-family: Arial;
   font-size: 15px;
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffee66;
+  text-align: center;
   position: relative;
+  margin-bottom: 1rem;
 }
 .Button:hover {
-  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-  background-color: #ffab23;
-  color: #a0e7e5;
+  background: linear-gradient(to bottom, #a0e7e6 5%, #e5ece5 100%);
+  color: #121314;
 }
 .Button:active {
   position: relative;
@@ -68,7 +68,7 @@ img {
 /* common  */
 h1 {
   font-size: 1.8rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 h2 {
   font-size: 1.6rem;
@@ -91,6 +91,7 @@ h2 {
   background-color: #f8f8f8;
   border-radius: 0.5rem;
   margin: 1rem;
+  text-align: center;
 }
 .card-body {
   padding: 1rem;
@@ -99,5 +100,9 @@ h2 {
   margin-bottom: 0.5rem;
 }
 .price {
-  font-size: 2rem;
+  font-size: 1.4rem;
+}
+.detail {
+  text-align: center;
+  margin-top: 2rem;
 }

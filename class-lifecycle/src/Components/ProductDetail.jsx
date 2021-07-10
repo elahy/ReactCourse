@@ -5,7 +5,7 @@ function ProductDetail(props) {
   console.log(product);
   return (
     <>
-      <div className="card">
+      <div className="detail">
         <img src={product.image} alt={product.name} />
         <h1>{product.name}</h1>
         <p>Details : {product.description}</p>
