@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import LoadingScreen from "./Components/LoadingScreen";
 import ProductList from "./Components/ProductList";
 import ProductDetail from "./Components/ProductDetail";
-// import ProductDetail from ".Components/ProductDetail";
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +65,7 @@ class App extends Component {
       ],
       loading: true,
       arrIndx: null,
-      hide: true,
+      hiDetail: true,
     };
     this.select = this.select.bind(this);
     this.back = this.back.bind(this);
@@ -75,18 +74,13 @@ class App extends Component {
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 4000);
   }
-  componentDidUpdate() {
-    setTimeout(() => this.setState({ loading: false }), 6000);
-  }
 
   select(id) {
     this.setState({ arrIndx: id - 1 });
-    this.setState({ hide: false });
-    this.setState({ loading: true });
+    this.setState({ hiDetail: false });
   }
   back() {
-    this.setState({ hide: true });
-    this.setState({ loading: true });
+    this.setState({ hiDetail: true });
   }
 
   render() {
@@ -94,7 +88,7 @@ class App extends Component {
       <>
         {this.state.loading ? (
           <LoadingScreen />
-        ) : this.state.hide ? (
+        ) : this.state.hiDetail ? (
           <ProductList list={this.state.products} btn={this.select} />
         ) : (
           <ProductDetail

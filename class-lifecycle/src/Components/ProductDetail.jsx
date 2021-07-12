@@ -2,7 +2,6 @@ import React from "react";
 
 function ProductDetail(props) {
   const product = props.product;
-  console.log(product);
   return (
     <>
       <div className="detail">
