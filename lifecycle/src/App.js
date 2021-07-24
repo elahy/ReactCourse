@@ -81,7 +81,7 @@ function App() {
   return (
     <>
       {loading === false ? (
-        <div className="App">
+        <div>
           {button ? (
             <Product pro={products} btn={showBtnHandler} />
           ) : (
