@@ -1,5 +1,13 @@
+import React, { useState } from "react";
+
 function App() {
-  return <div className="App"></div>;
+  const [user, setUser] = useState([]);
+  return (
+    <div className="App">
+      <div>Hi bye</div>
+      {user}
+    </div>
+  );
 }
 
 export default App;
