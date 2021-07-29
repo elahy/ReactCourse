@@ -11,12 +11,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* .profile {
-  margin: 20px 15px;
-  padding: 0px 15px;
-  box-sizing: content-box;
-  border: tomato thick;
-  border-radius: 1rem;
+/* HomePage Design */
+.home {
+  background-color: thistle;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+.logo {
+  border-radius: 50%;
+  grid-column: 2;
   display: flex;
-} */
+}
+.hometag {
+  grid-column: 1;
+  display: flex;
+}
+.homedescription {
+  grid-column: 1;
+  display: flex;
+}
+.learnbtn,
+.joinbtn {
+  grid-column: 1;
+  /* display: inline-block; */
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  width: 200px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+/* member list Design */
+.profile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.contactbtn {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.contactbtn:hover {
+  opacity: 0.7;
+}
+
+img {
+  width: 300px;
+}

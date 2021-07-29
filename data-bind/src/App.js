@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-
+import Members from "./Components/Members";
+import AddMember from "./Components/AddMember";
+import HomePage from "./Components/HomePage";
 function App() {
   const [member, setMember] = useState([
     {
@@ -59,18 +61,9 @@ function App() {
   ]);
   return (
     <div className="App">
-      <div>Hi bye</div>
-      {member.map((student) => (
-        <div className="profile">
-          <img src={student.image} alt={student.name} />
-          {console.log(student.image)}
-          <h1>{student.name}</h1>
-          <h2>{student.education}</h2>
-          <h2>{student.age}</h2>
-          <h2>{student.address}</h2>
-          <h2>{student.phone}</h2>
-        </div>
-      ))}
+      <HomePage />
+      {/* <AddMember /> */}
+      {/* <Members member={member} /> */}
     </div>
   );
 }
