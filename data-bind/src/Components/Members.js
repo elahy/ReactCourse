@@ -20,7 +20,7 @@ function Members(props) {
         ))}
       </div>
       <div>
-        <Link to="/" className="learnbtn">
+        <Link to="/" className="backbtn">
           Go Back
         </Link>
       </div>

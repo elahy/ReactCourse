@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function AddMember() {
   return (
@@ -16,6 +17,9 @@ function AddMember() {
 
         <input type="submit" value="Submit" />
       </form>
+      <Link to="/" className="backbtn">
+        Go Back
+      </Link>
     </div>
   );
 }

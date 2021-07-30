@@ -174,6 +174,7 @@ code {
   padding: 0.5rem 2rem;
   border-radius: 20px;
   text-align: center;
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* member list Design */
@@ -214,4 +215,18 @@ a {
 
 img {
   width: 300px;
+}
+.backbtn {
+  display: inline-flexbox;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-radius: 2rem;
+  width: 200px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #f6f6f6;
+  background-color: #98ded9;
+  text-align: center;
 }
