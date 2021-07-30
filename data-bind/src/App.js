@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Members from "./Components/Members";
 import AddMember from "./Components/AddMember";
 import HomePage from "./Components/HomePage";
+import { Switch, Route, Link } from "react-router-dom";
+
 function App() {
   const [member, setMember] = useState([
     {
@@ -61,9 +63,17 @@ function App() {
   ]);
   return (
     <div className="App">
-      <HomePage />
-      {/* <AddMember /> */}
-      {/* <Members member={member} /> */}
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/join">
+          <AddMember />
+        </Route>
+        <Route path="/memberlist">
+          <Members member={member} />
+        </Route>
+      </Switch>
     </div>
   );
 }
