@@ -219,7 +219,7 @@ img {
 .backbtn {
   display: inline-flexbox;
   padding: 0.5rem 1rem;
-  margin: 0;
+  margin: 5rem 0;
   border-radius: 2rem;
   width: 200px;
   box-sizing: border-box;
@@ -229,4 +229,8 @@ img {
   color: #f6f6f6;
   background-color: #98ded9;
   text-align: center;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

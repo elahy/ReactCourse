@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Members from "./Components/Members";
 import AddMember from "./Components/AddMember";
 import HomePage from "./Components/HomePage";
+import Details from "./Components/Details";
 import { Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -72,6 +73,9 @@ function App() {
         </Route>
         <Route path="/memberlist">
           <Members member={member} />
+        </Route>
+        <Route path="/details">
+          <Details />
         </Route>
       </Switch>
     </div>
