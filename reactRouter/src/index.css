@@ -209,7 +209,7 @@ code {
   opacity: 0.7;
 }
 
-img {
+.listimg {
   width: 300px;
 }
 .backbtn {
@@ -229,4 +229,33 @@ img {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+/* Member Detail Page Design */
+.Dtlprofile {
+  text-align: center;
+}
+
+.DtlImg {
+  margin: 2rem;
+  width: 500px;
+  border-radius: 10px;
+  border: 0.5rem solid #98ded9;
+}
+.dtlVision {
+  margin: 0 15rem;
+  text-align: justify;
+  font-size: 20px;
+}
+.prof {
+  font-size: 30px;
+  margin: 1rem;
+}
+.dtlName {
+  font-size: 40px;
+  margin: 1rem;
+}
+.para {
+  font-size: 25px;
+  margin: 0.5rem;
 }

@@ -5,16 +5,15 @@ import HomePage from "./Components/HomePage";
 import Details from "./Components/Details";
 import Loading from "./Components/Loading";
 import NotFound from "./Components/NotFound";
+import MemberDetails from "./Components/MemberDetails";
 import data from "./data";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
-  const [member, setMember] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 3000);
+    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   return (
@@ -32,10 +31,13 @@ function App() {
           <Route path="/memberlist">
             <Members member={data.members} />
           </Route>
+          <Route path="/member/:id">
+            <MemberDetails />
+          </Route>
           <Route path="/details">
             <Details />
           </Route>
-          <Route path="/nf">
+          <Route path="*">
             <NotFound />
           </Route>
         </Switch>

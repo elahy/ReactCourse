@@ -6,14 +6,14 @@ function Members(props) {
   return (
     <>
       <div>
-        {member.map((student) => (
-          <div className="profile">
-            <img src={student.image} alt={student.name} />
-            <h1>{student.name}</h1>
-            <p class="title">{student.education}</p>
-            <p>{student.address}</p>
+        {member.map((m) => (
+          <div className="profile" key={m.id}>
+            <img className="listimg" src={m.image} alt={m.name} />
+            <h1>{m.name}</h1>
+            <p className="title">{m.education}</p>
+            <p>{m.address}</p>
             <p>
-              <Link to="/" className="contactbtn">
+              <Link to={`/member/${m.id}`} className="contactbtn">
                 View Details
               </Link>
             </p>
@@ -22,7 +22,7 @@ function Members(props) {
       </div>
       <div>
         <Link to="/" className="backbtn">
-          Go Back
+          Back to Home
         </Link>
       </div>
     </>

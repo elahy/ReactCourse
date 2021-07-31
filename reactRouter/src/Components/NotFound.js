@@ -8,7 +8,7 @@ function NotFound() {
       <h1 className="nfheader">404</h1>
       <p className="nfpara">Oops! Something is wrong.</p>
       <Link to="/" className="nfbackbtn">
-        Go Back
+        Back to Home
       </Link>
     </div>
   );
