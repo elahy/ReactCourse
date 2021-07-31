@@ -11,10 +11,11 @@ function Members(props) {
             <img src={student.image} alt={student.name} />
             <h1>{student.name}</h1>
             <p class="title">{student.education}</p>
-            <p>{student.age}</p>
             <p>{student.address}</p>
             <p>
-              <button className="contactbtn">{student.phone}</button>
+              <Link to="/" className="contactbtn">
+                View Details
+              </Link>
             </p>
           </div>
         ))}
