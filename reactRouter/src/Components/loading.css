@@ -1,11 +1,9 @@
 .loading {
   font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
   text-transform: uppercase;
-
   width: 150px;
   text-align: center;
   line-height: 50px;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -21,7 +19,7 @@
 }
 .loading:before {
   content: "";
-  background: #61bdb6;
+  background: #98ded9;
   width: 128px;
   height: 36px;
   display: block;
@@ -49,7 +47,7 @@
 
 .loading:after {
   content: "";
-  background: #ff3600;
+  background: #161d6f;
   width: 14px;
   height: 60px;
   display: block;

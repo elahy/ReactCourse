@@ -4,6 +4,7 @@ import AddMember from "./Components/AddMember";
 import HomePage from "./Components/HomePage";
 import Details from "./Components/Details";
 import Loading from "./Components/Loading";
+import NotFound from "./Components/NotFound";
 import { Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -87,6 +88,9 @@ function App() {
           </Route>
           <Route path="/details">
             <Details />
+          </Route>
+          <Route path="/nf">
+            <NotFound />
           </Route>
         </Switch>
       )}
