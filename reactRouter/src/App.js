@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Members from "./Components/Members";
 import AddMember from "./Components/AddMember";
 import HomePage from "./Components/HomePage";
 import Details from "./Components/Details";
+import Loading from "./Components/Loading";
 import { Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -62,22 +63,33 @@ function App() {
       phone: "01931298342",
     },
   ]);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
+
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/join">
-          <AddMember />
-        </Route>
-        <Route path="/memberlist">
-          <Members member={member} />
-        </Route>
-        <Route path="/details">
-          <Details />
-        </Route>
-      </Switch>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/join">
+            <AddMember />
+          </Route>
+          <Route path="/memberlist">
+            <Members member={member} />
+          </Route>
+          <Route path="/details">
+            <Details />
+          </Route>
+        </Switch>
+      )}
     </div>
   );
 }
