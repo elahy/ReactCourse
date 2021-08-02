@@ -38,36 +38,38 @@ code {
 .joinbtn {
   grid-area: header0;
   display: inline-flexbox;
-  padding: 0.5rem 0.5rem;
+  padding: 0.6rem 0.5rem;
   margin: 1rem 2rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   width: 200px;
   height: 40px;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #f6f6f6;
+  font-weight: 400;
+  font-size: 18px;
+  color: gray;
   background-color: #98ded9;
   text-align: center;
   justify-self: center;
+}
+.joinbtn:hover {
+  color: #161d6f;
 }
 
 .logo {
   grid-area: logo;
   border-radius: 50%;
+  max-width: 400px;
   justify-self: center;
-  margin: 0 2.5rem;
-  border-style: dotted;
-  border-color: black;
+  margin: 0 8rem 0 0.5rem;
   border: 0.5rem solid #98ded9;
-  /* margin-top: 5rem; */
 }
 .hometag {
   grid-area: main1;
   display: inline-grid;
   font-size: 60px;
-  margin: 0 2rem 0 0;
+  margin: 0 4rem 0 6rem;
   font-weight: 500;
   color: #98ded9;
   padding: 0rem 8rem 0rem 4rem;
@@ -76,7 +78,7 @@ code {
 .homedescription {
   grid-area: main2;
   display: inline-grid;
-  margin: 2rem 6rem 2rem 0;
+  margin: 2rem 6rem 2rem 6rem;
   padding: 0 6rem 0 4rem;
   text-align: justify;
   color: #161d6f;
@@ -89,15 +91,20 @@ code {
   display: inline-flexbox;
   padding: 0.8rem 1rem;
   margin: 4rem 2rem 5rem 2rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   width: 200px;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #f6f6f6;
+  font-weight: 400;
+  font-size: 18px;
+  color: gray;
   background-color: #98ded9;
   text-align: center;
+}
+.learnbtn:hover,
+.viewmemberbtn:hover {
+  color: #161d6f;
 }
 .viewmemberbtn {
   grid-area: main3;
@@ -105,13 +112,14 @@ code {
   padding: 0.8rem 1rem;
   margin: 4rem 4rem 5rem 20rem;
   /* justify-content: right; */
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   width: 200px;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #f6f6f6;
+  font-weight: 400;
+  font-size: 18px;
+  color: gray;
   background-color: #98ded9;
   text-align: center;
 }
