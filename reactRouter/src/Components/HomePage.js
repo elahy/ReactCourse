@@ -36,6 +36,16 @@ function HomePage() {
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam.
       </p>
+      <p className="homemenu3">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
+      <p className="homemenu4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
 
       <img className="galleryim1" src="./images/SDF1.jpg" alt="SDF at work" />
       <img className="galleryim2" src="./images/SDF2.jpg" alt="SDF at work" />
@@ -44,8 +54,7 @@ function HomePage() {
 
       <div className="footer">
         <p>copyright &copy; SDF</p>
-        <p>Contact: 01913093116</p>
-        <p>Email: sdf2020@gmail.com</p>
+        <p>Contact: 01913093116 / sdf2020@gmail.com</p>
       </div>
     </div>
   );

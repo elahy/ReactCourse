@@ -20,8 +20,10 @@ code {
     "main1 main1 logo"
     "main2 main2 logo"
     "main3 main4 logo"
-    "menu1 gallery1 gallery2"
-    "menu2 gallery3 gallery4"
+    "menu1 gallery1 gallery1"
+    "menu2 gallery2 gallery2"
+    "menu3 gallery3 gallery3"
+    "menu4 gallery4 gallery4"
     "footer footer footer";
   grid-gap: 0.2rem;
   /* background-color: rgb(240, 230, 230); */
@@ -30,7 +32,7 @@ code {
 .homeheader {
   grid-area: header;
   font-size: 85px;
-  margin: 0;
+  margin: 0 0 0 12rem;
   padding: 0 1rem 1rem 4rem;
   color: #161d6f;
   font-family: "Lucida Console", "Courier New", monospace;
@@ -39,7 +41,7 @@ code {
   grid-area: header0;
   display: inline-flexbox;
   padding: 0.6rem 0.5rem;
-  margin: 1rem 2rem;
+  margin: 1rem 18rem 1rem 2rem;
   border-radius: 0.5rem;
   width: 200px;
   height: 40px;
@@ -48,69 +50,68 @@ code {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: gray;
+  color: #161d6f;
   background-color: #98ded9;
   text-align: center;
   justify-self: center;
 }
 .joinbtn:hover {
-  color: #161d6f;
+  color: chocolate;
 }
 
 .logo {
   grid-area: logo;
   border-radius: 50%;
-  max-width: 400px;
+  max-width: 380px;
   justify-self: center;
-  margin: 0 8rem 0 0.5rem;
+  margin: 0 15.5rem 0 0.5rem;
   border: 0.5rem solid #98ded9;
 }
 .hometag {
   grid-area: main1;
   display: inline-grid;
   font-size: 60px;
-  margin: 0 4rem 0 6rem;
+  margin: 2rem 0 0 12rem;
   font-weight: 500;
   color: #98ded9;
-  padding: 0rem 8rem 0rem 4rem;
+  padding: 0rem 3rem 0 4rem;
 }
 
 .homedescription {
   grid-area: main2;
   display: inline-grid;
-  margin: 2rem 6rem 2rem 6rem;
-  padding: 0 6rem 0 4rem;
+  margin: 0rem 3rem 2rem 12rem;
+  padding: 1rem 2rem 0 4rem;
   text-align: justify;
   color: #161d6f;
-  font-size: 25px;
+  font-size: 22px;
   font-family: "Times New Roman", Times, serif;
 }
 
 .learnbtn {
   grid-area: main4;
   display: inline-flexbox;
-  padding: 0.8rem 1rem;
-  margin: 4rem 2rem 5rem 2rem;
+  padding: 0.6rem 0.5rem;
+  margin: 2rem 8rem 7rem 0rem;
   border-radius: 0.5rem;
   width: 200px;
+  height: 40px;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: gray;
+  color: #161d6f;
   background-color: #98ded9;
   text-align: center;
 }
-.learnbtn:hover,
-.viewmemberbtn:hover {
-  color: #161d6f;
-}
+
 .viewmemberbtn {
   grid-area: main3;
   display: inline-flexbox;
-  padding: 0.8rem 1rem;
-  margin: 4rem 4rem 5rem 20rem;
+  padding: 0.6rem 0.5rem;
+  height: 40px;
+  margin: 2rem 0rem 7rem 28rem;
   /* justify-content: right; */
   border-radius: 0.5rem;
   width: 200px;
@@ -119,60 +120,62 @@ code {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: gray;
+  color: #161d6f;
   background-color: #98ded9;
   text-align: center;
 }
-.homemenu1 {
-  grid-area: menu1;
+.learnbtn:hover,
+.viewmemberbtn:hover {
+  color: chocolate;
+}
+
+.homemenu1,
+.homemenu2,
+.homemenu3,
+.homemenu4 {
   color: #161d6f;
-  padding: 7rem 6rem 0 4rem;
-  margin-right: 2rem;
+  padding: 6rem 0rem 0 4rem;
+  margin: 0 2rem 2rem 20rem;
   font-size: 25px;
   font-family: "Times New Roman", Times, serif;
   text-align: justify;
+}
+
+.homemenu1 {
+  grid-area: menu1;
 }
 .homemenu2 {
   grid-area: menu2;
-  color: #161d6f;
-  padding: 6rem 6rem 0 4rem;
-  margin-right: 2rem;
-  font-size: 25px;
-  font-family: "Times New Roman", Times, serif;
-  text-align: justify;
 }
-.galleryim1 {
-  width: 450px;
-  margin-top: 3rem;
-  margin-right: 2rem;
-  justify-content: right;
-  grid-area: gallery1;
-  border-radius: 30px;
-  border: 0.3rem solid #98ded9;
+.homemenu3 {
+  grid-area: menu3;
 }
-.galleryim2 {
-  width: 450px;
-  margin-top: 3rem;
-  margin-right: 3rem;
-  grid-area: gallery2;
-  border-radius: 30px;
-  border: 0.3rem solid #98ded9;
+.homemenu4 {
+  grid-area: menu4;
 }
-.galleryim3 {
-  width: 450px;
-  margin-top: 6rem;
-  margin-right: 0;
-  grid-area: gallery3;
-  border-radius: 30px;
-  border: 0.3rem solid #98ded9;
-}
+
+.galleryim1,
+.galleryim2,
+.galleryim3,
 .galleryim4 {
   width: 450px;
-  margin-top: 6rem;
-  margin-left: 0;
-  grid-area: gallery4;
+  margin: 2rem 0 2rem 10rem;
+  justify-content: right;
   border-radius: 30px;
   border: 0.3rem solid #98ded9;
+}
+
+.galleryim1 {
+  grid-area: gallery1;
+}
+.galleryim2 {
+  grid-area: gallery2;
+}
+.galleryim3 {
+  grid-area: gallery3;
+}
+.galleryim4 {
+  grid-area: gallery4;
 }
 
 .footer {
@@ -180,7 +183,7 @@ code {
   background-color: #98ded9;
   color: #161d6f;
   margin: 2rem 0 0 0;
-  padding: 0.5rem 2rem;
+  padding: 0.1rem 2rem;
   border-radius: 20px;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
