@@ -27,3 +27,30 @@ code {
 .proList {
   background-color: darkslateblue;
 }
+
+/* Nav Bar Design */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 30px 10%;
+  background-color: #24252a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+li,
+Link,
+button {
+  font-family: "Montserat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.logo {
+  cursor: pointer;
+  height: 30px;
+}
