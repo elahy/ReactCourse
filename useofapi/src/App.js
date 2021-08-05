@@ -4,6 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Components/Loader";
 import ProductList from "./Components/ProductList";
+import DeleteProduct from "./Components/DeleteProduct";
+import AddProduct from "./Components/AddProduct";
+import Policy from "./Components/Policy";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -32,12 +35,12 @@ function App() {
             <nav>
               <ul className="nav_links">
                 <li>
-                  <Link to="/" className="navbtn">
+                  <Link to="/add" className="navbtn">
                     Add Products
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="navbtn">
+                  <Link to="/delete" className="navbtn">
                     Delete Products
                   </Link>
                 </li>
@@ -46,7 +49,20 @@ function App() {
             <button className="homebtn">Home</button>
           </header>
           <main>
-            <ProductList proList={productList} />
+            <Switch>
+              <Route exact path="/">
+                <ProductList proList={productList} />
+              </Route>
+              <Route path="/delete">
+                <DeleteProduct />
+              </Route>
+              <Route path="/add">
+                <AddProduct />
+              </Route>
+              <Route path="/PrivacyPolicy">
+                <Policy />
+              </Route>
+            </Switch>
           </main>
           <footer>
             <div class="bottom-details">
