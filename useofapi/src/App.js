@@ -3,7 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Components/Loader";
-// import ProductList from "./Components/ProductList";
+import ProductList from "./Components/ProductList";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -18,7 +18,7 @@ function App() {
       .catch((error) => {
         console.log(error, "===response");
       });
-    setTimeout(() => setLoader(false), 2000);
+    setTimeout(() => setLoader(false), 1500);
   }, []);
   console.log(productList, "===products");
   return (
@@ -26,24 +26,41 @@ function App() {
       {loader ? (
         <Loader />
       ) : (
-        <header>
-          <img className="logo" src="../images/logo.png" alt="logo" />
-          <nav>
-            <ul className="nav_links">
-              <li>
-                <Link to="/" className="navbtn">
-                  Add Products
+        <>
+          <header>
+            <img className="logo" src="../images/logo.png" alt="logo" />
+            <nav>
+              <ul className="nav_links">
+                <li>
+                  <Link to="/" className="navbtn">
+                    Add Products
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="navbtn">
+                    Delete Products
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <button className="homebtn">Home</button>
+          </header>
+          <main>
+            <ProductList proList={productList} />
+          </main>
+          <footer>
+            <div class="bottom-details">
+              <span className="copyright_text">
+                Copyright © 2021 Ecommerce.
+              </span>
+              <span className="policy_terms">
+                <Link to="/PrivacyPolicy" className="privacy">
+                  Privacy policy
                 </Link>
-              </li>
-              <li>
-                <Link to="/" className="navbtn">
-                  Delete Products
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <button className="homebtn">Home</button>
-        </header>
+              </span>
+            </div>
+          </footer>
+        </>
       )}
     </>
   );

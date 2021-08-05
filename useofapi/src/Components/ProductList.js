@@ -6,7 +6,6 @@ function ProductList(props) {
   console.log(productList);
   return (
     <div>
-      <p>Product List</p>
       {productList.map((product, index) => (
         <div key={index} className="product">
           <img src={product.image} alt={product.title} />

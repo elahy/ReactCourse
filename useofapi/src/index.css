@@ -13,8 +13,8 @@ code {
 }
 .product {
   width: 300px;
-  height: 800px;
-  border: 5px solid aquamarine;
+  height: 500px;
+  /* border: 5px solid aquamarine; */
   padding: 50px;
   margin: 0 20px;
   align-content: center;
@@ -22,10 +22,11 @@ code {
   display: inline-block;
 }
 .product img {
-  width: 300px;
+  max-height: 350px;
+  max-width: 350px;
 }
 .proList {
-  background-color: darkslateblue;
+  background-color: floralwhite;
 }
 
 /* Nav Bar Design */
@@ -79,4 +80,27 @@ header {
 .homebtn:hover {
   color: #24252a;
   background-color: #edf0f1;
+}
+
+/* Footer design */
+.bottom-details {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #24252a;
+}
+.bottom-details span,
+.bottom-details a {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.bottom-details a:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
