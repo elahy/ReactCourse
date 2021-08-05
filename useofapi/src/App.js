@@ -32,11 +32,6 @@ function App() {
             <ul className="nav_links">
               <li>
                 <Link to="/" className="navbtn">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="navbtn">
                   Add Products
                 </Link>
               </li>
@@ -47,7 +42,7 @@ function App() {
               </li>
             </ul>
           </nav>
-          <button>Signup</button>
+          <button className="homebtn">Home</button>
         </header>
       )}
     </>

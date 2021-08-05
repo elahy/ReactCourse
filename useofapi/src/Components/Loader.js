@@ -1,11 +1,11 @@
 import React from "react";
-import "./loader.css";
+import styles from "./loader.module.css";
 
 function Loader() {
   return (
-    <loader className="body">
-      <div className="loader"></div>
-    </loader>
+    <div className={styles.whole}>
+      <div className={styles.loader}></div>
+    </div>
   );
 }
 

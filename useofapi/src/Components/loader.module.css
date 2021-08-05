@@ -1,6 +1,8 @@
-loader {
+* {
   margin: 0;
   padding: 0;
+}
+div {
   background-color: #34515f;
 }
 
@@ -11,7 +13,7 @@ loader {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background-color: #f9f9f9;
+  background-color: #06b2c2;
   animation: load 1.2s ease-in-out infinite;
 }
 

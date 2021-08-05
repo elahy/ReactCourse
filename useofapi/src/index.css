@@ -34,15 +34,14 @@ code {
 header {
   box-sizing: border-box;
   margin: 0;
-  padding: 30px 10%;
+  padding: 15px 10%;
   background-color: #24252a;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-li,
-Link,
-button {
+
+.navbtn {
   font-family: "Montserat", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -53,4 +52,31 @@ button {
 .logo {
   cursor: pointer;
   height: 30px;
+}
+
+.nav_links {
+  list-style: none;
+}
+.nav_links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.nav_links li .navbtn {
+  transition: all 0.3s ease 0s;
+}
+.nav_links li .navbtn:hover {
+  color: #06b2c2;
+}
+.homebtn {
+  padding: 9px 25px;
+  background-color: #04b4c4;
+  color: #edf0f1;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.homebtn:hover {
+  color: #24252a;
+  background-color: #edf0f1;
 }
