@@ -1,15 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router";
 import Button from "@material-ui/core/Button";
 
 function ProductList(props) {
-  const history = useHistory();
   const productList = props.proList;
   console.log(productList);
-  const buttonHanlder = (e) => {
-    console.log(e, "===event");
-    // history.push("/product/{product}")
-  };
   return (
     <div>
       {productList.map((product, index) => (
@@ -18,7 +12,7 @@ function ProductList(props) {
           <p>{product.title}</p>
           <p>{product.price}</p>
           <p>{product.category}</p>
-          <Button onClick={buttonHanlder} variant="contained" color="primary">
+          <Button variant="contained" color="primary">
             See Details
           </Button>
         </div>

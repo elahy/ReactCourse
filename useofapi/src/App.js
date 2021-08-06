@@ -7,6 +7,7 @@ import ProductList from "./Components/ProductList";
 import DeleteProduct from "./Components/DeleteProduct";
 import AddProduct from "./Components/AddProduct";
 import Policy from "./Components/Policy";
+import NotFound from "./Components/NotFound";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -15,7 +16,6 @@ function App() {
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
-        // handle success
         setProductList(response.data);
       })
       .catch((error) => {
@@ -46,11 +46,16 @@ function App() {
                 </li>
               </ul>
             </nav>
-            <button className="homebtn">Home</button>
+            <Link to="/" className="homebtn">
+              Home
+            </Link>
           </header>
           <main>
             <Switch>
               <Route exact path="/">
+                <ProductList proList={productList} />
+              </Route>
+              <Route exact path="/product/:id">
                 <ProductList proList={productList} />
               </Route>
               <Route path="/delete">
@@ -62,10 +67,13 @@ function App() {
               <Route path="/PrivacyPolicy">
                 <Policy />
               </Route>
+              <Route path="/*">
+                <NotFound />
+              </Route>
             </Switch>
           </main>
           <footer>
-            <div class="bottom-details">
+            <div className="bottom-details">
               <span className="copyright_text">
                 Copyright © 2021 Ecommerce.
               </span>
