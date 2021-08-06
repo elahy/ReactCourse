@@ -41,6 +41,11 @@ function App() {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/update" className="navbtn">
+                    Update Products
+                  </Link>
+                </li>
+                <li>
                   <Link to="/delete" className="navbtn">
                     Delete Products
                   </Link>
@@ -63,6 +68,9 @@ function App() {
                 <DeleteProduct />
               </Route>
               <Route path="/add">
+                <AddProduct />
+              </Route>
+              <Route path="/update">
                 <AddProduct />
               </Route>
               <Route path="/PrivacyPolicy">
