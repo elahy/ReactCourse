@@ -8,7 +8,7 @@ function ProductList(props) {
   console.log(productList);
   const buttonHanlder = (e) => {
     console.log(e, "===event");
-    // history.push("/product/{product}")
+    history.push(`/product/${e}`);
   };
   return (
     <div>
@@ -18,7 +18,11 @@ function ProductList(props) {
           <p>{product.title}</p>
           <p>{product.price}</p>
           <p>{product.category}</p>
-          <Button onClick={buttonHanlder} variant="contained" color="primary">
+          <Button
+            onClick={() => buttonHanlder(product.id)}
+            variant="contained"
+            color="primary"
+          >
             See Details
           </Button>
         </div>

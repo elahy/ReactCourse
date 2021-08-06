@@ -8,6 +8,7 @@ import DeleteProduct from "./Components/DeleteProduct";
 import AddProduct from "./Components/AddProduct";
 import Policy from "./Components/Policy";
 import NotFound from "./Components/NotFound";
+import ProductDetails from "./Components/ProductDetails";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -56,7 +57,7 @@ function App() {
                 <ProductList proList={productList} />
               </Route>
               <Route exact path="/product/:id">
-                <ProductList proList={productList} />
+                <ProductDetails />
               </Route>
               <Route path="/delete">
                 <DeleteProduct />
