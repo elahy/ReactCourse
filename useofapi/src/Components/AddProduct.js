@@ -1,11 +1,158 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Loader from "./Loader";
+import { useHistory } from "react-router";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "44%",
+      textAlign: "center",
+      marginLeft: "28%",
+      marginRight: "28%",
+    },
+  },
+  input: {
+    margin: theme.spacing(1),
+    marginLeft: "45%",
+  },
+}));
 
 function AddProduct() {
+  const [loader, setLoader] = useState(false);
+  const history = useHistory();
+  const classes = useStyles();
+  const [product, setProduct] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: "",
+    category: "",
+  });
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setProduct({
+      ...product,
+      [event.target.name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    setLoader(true);
+    axios
+      .post("https://fakestoreapi.com/products", {
+        title: product.title,
+        price: product.price,
+        description: product.dexcription,
+        image: product.image,
+        category: product.category,
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          console.log("Success");
+          history.push("/success");
+        } else {
+          console.log("Failed");
+        }
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    console.log(product, "===product set done");
+    e.preventDefault();
+
+    // setTimeout(() => setLoader(false), 2500);
+  };
   return (
-    <div>
-      <p>Add New Product</p>
-      <button>Submit</button>
-    </div>
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <div>
+          <h1>Add Product Details</h1>
+          <form
+            onSubmit={handleSubmit}
+            className={classes.root}
+            noValidate
+            autoComplete="off"
+          >
+            <div>
+              <TextField
+                id="outlined-multiline-flexible"
+                label="Title"
+                multiline
+                maxRows={4}
+                variant="outlined"
+                type="text"
+                name="title"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <TextField
+                id="outlined-textarea"
+                label="Price"
+                placeholder="Placeholder"
+                multiline
+                variant="outlined"
+                type="text"
+                name="price"
+                onChange={handleChange}
+              />
+              <div />
+              <div>
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Description"
+                  multiline
+                  rows={8}
+                  variant="outlined"
+                  type="text"
+                  name="description"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Image"
+                  multiline
+                  maxRows={5}
+                  variant="outlined"
+                  type="text"
+                  name="image"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Category"
+                  variant="outlined"
+                  type="text"
+                  name="category"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <Button
+              onClick={handleSubmit}
+              className={classes.input}
+              variant="contained"
+              color="primary"
+            >
+              Submit
+            </Button>
+          </form>
+        </div>
+      )}
+    </>
   );
 }
 

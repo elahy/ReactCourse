@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Container } from "@material-ui/core";
+// import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -10,15 +10,18 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Loader from "./Loader";
 
 function ProductList(props) {
+  const [loader, setLoader] = useState(true);
   const pro = useParams();
   console.log(pro, "===id");
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
     root: {
-      maxWidth: 345,
+      maxWidth: "40%",
       alignContent: "center",
+      marginLeft: "30%",
     },
   });
   const classes = useStyles();
@@ -27,6 +30,7 @@ function ProductList(props) {
       .get(`https://fakestoreapi.com/products/${pro.id}`)
       .then((response) => {
         setProduct(response.data);
+        setTimeout(() => setLoader(false), 1);
       })
       .catch(function (error) {
         console.log(error);
@@ -34,43 +38,51 @@ function ProductList(props) {
   }, [pro]);
 
   return (
-    <Card className={classes.root}>
-      {/* <div key={product.id} className="productDetails">
-          <p>{product.price}</p>
-          <p>{product.category}</p>
-        </div> */}
-
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt={product.title}
-          height="350"
-          image={product.image}
-          title={product.title}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {product.title}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="body2"
-            color="textSecondary"
-            component="p"
-          >
-            {product.description}
-          </Typography>
-          <Typography variant="h5" color="textPrimary" component="p">
-            Price: ${product.price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
-    </Card>
+    <>
+      {" "}
+      {loader ? (
+        <Loader />
+      ) : (
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt={product.title}
+              // maxHeight="500"
+              image={product.image}
+              title={product.title}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {product.title}
+              </Typography>
+              <Typography
+                gutterBottom
+                variant="body1"
+                color="textSecondary"
+                component="p"
+              >
+                {product.description}
+              </Typography>
+              <Typography variant="h6" color="textSecondary" component="p">
+                Type: {product.category}
+              </Typography>
+              <Typography variant="h5" color="textPrimary" component="p">
+                Price: ${product.price}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="medium" variant="outlined" color="primary">
+              Add to cart
+            </Button>
+            <Button size="medium" variant="outlined" color="primary">
+              Go Back
+            </Button>
+          </CardActions>
+        </Card>
+      )}
+    </>
   );
 }
 

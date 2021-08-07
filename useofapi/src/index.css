@@ -69,12 +69,14 @@ header {
   color: #06b2c2;
 }
 .homebtn {
-  padding: 9px 25px;
+  padding: 8px 25px;
   background-color: #04b4c4;
   color: #edf0f1;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 17px;
+  font-weight: 450;
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }

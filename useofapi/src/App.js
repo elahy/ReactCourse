@@ -9,6 +9,7 @@ import AddProduct from "./Components/AddProduct";
 import Policy from "./Components/Policy";
 import NotFound from "./Components/NotFound";
 import ProductDetails from "./Components/ProductDetails";
+import Success from "./Components/Success";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -76,12 +77,15 @@ function App() {
               <Route path="/PrivacyPolicy">
                 <Policy />
               </Route>
+              <Route path="/success">
+                <Success />
+              </Route>
               <Route path="/*">
                 <NotFound />
               </Route>
             </Switch>
           </main>
-          <footer>
+          {/* <footer>
             <div className="bottom-details">
               <span className="copyright_text">
                 Copyright © 2021 Ecommerce.
@@ -92,7 +96,7 @@ function App() {
                 </Link>
               </span>
             </div>
-          </footer>
+          </footer> */}
         </>
       )}
     </>
