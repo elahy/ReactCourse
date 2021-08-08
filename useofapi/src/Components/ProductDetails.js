@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-// import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -11,11 +10,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
+import { useHistory } from "react-router";
 
 function ProductList(props) {
   const [loader, setLoader] = useState(true);
   const pro = useParams();
-  console.log(pro, "===id");
+  const history = useHistory();
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
     root: {
@@ -30,16 +30,19 @@ function ProductList(props) {
       .get(`https://fakestoreapi.com/products/${pro.id}`)
       .then((response) => {
         setProduct(response.data);
-        setTimeout(() => setLoader(false), 1);
+        setTimeout(() => setLoader(false));
       })
       .catch(function (error) {
         console.log(error);
       });
   }, [pro]);
 
+  const buttonHandler = () => {
+    history.push("/");
+  };
+
   return (
     <>
-      {" "}
       {loader ? (
         <Loader />
       ) : (
@@ -48,7 +51,6 @@ function ProductList(props) {
             <CardMedia
               component="img"
               alt={product.title}
-              // maxHeight="500"
               image={product.image}
               title={product.title}
             />
@@ -76,7 +78,12 @@ function ProductList(props) {
             <Button size="medium" variant="outlined" color="primary">
               Add to cart
             </Button>
-            <Button size="medium" variant="outlined" color="primary">
+            <Button
+              onClick={buttonHandler}
+              size="medium"
+              variant="outlined"
+              color="primary"
+            >
               Go Back
             </Button>
           </CardActions>
