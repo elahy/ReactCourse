@@ -17,9 +17,16 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "28%",
     },
   },
-  input: {
+  input1: {
     margin: theme.spacing(1),
     marginLeft: "45%",
+  },
+  input2: {
+    margin: theme.spacing(1),
+    marginLeft: 15,
+  },
+  head: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -76,7 +83,12 @@ function AddProduct() {
         <Loader />
       ) : (
         <div>
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography
+            variant="h3"
+            align="center"
+            className={classes.head}
+            gutterBottom
+          >
             Add Product Details
           </Typography>
           <form
@@ -144,15 +156,25 @@ function AddProduct() {
                 />
               </div>
             </div>
+          </form>
+          <div>
             <Button
               onClick={handleSubmit}
-              className={classes.input}
+              className={classes.input1}
               variant="contained"
               color="primary"
             >
               Submit
             </Button>
-          </form>
+            <Button
+              onClick={handleSubmit}
+              className={classes.input2}
+              variant="contained"
+              color="secondary"
+            >
+              Cancel
+            </Button>
+          </div>
         </div>
       )}
     </>

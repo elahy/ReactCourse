@@ -11,23 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.product {
-  width: 300px;
-  height: 500px;
-  /* border: 5px solid aquamarine; */
-  padding: 50px;
-  margin: 0 20px;
+.productList {
+  padding: 30px;
+  /* margin: 0 20px; */
   align-content: center;
   position: relative;
   display: inline-block;
 }
-.product img {
+.input {
+  /* align-content: center; */
+  margin-left: 45px;
+  /* position: relative; */
+  /* display: inline-block; */
+}
+/* .product img {
   max-height: 350px;
   max-width: 350px;
 }
 .proList {
   background-color: floralwhite;
-}
+} */
 
 /* Nav Bar Design */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");

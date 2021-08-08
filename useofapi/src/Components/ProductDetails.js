@@ -25,6 +25,7 @@ function ProductList(props) {
       alignContent: "center",
       marginLeft: "27%",
     },
+    buttton: {},
   });
   const classes = useStyles();
   useEffect(() => {
@@ -94,11 +95,17 @@ function ProductList(props) {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="medium" variant="outlined" color="primary">
+            <Button
+              size="medium"
+              className={classes.buttton}
+              variant="outlined"
+              color="primary"
+            >
               Add to cart
             </Button>
             <Button
               onClick={buttonHandler}
+              className={classes.buttton}
               size="medium"
               variant="outlined"
               color="primary"
@@ -107,6 +114,7 @@ function ProductList(props) {
             </Button>
             <Button
               onClick={updateHandler}
+              className={classes.buttton}
               size="medium"
               variant="outlined"
               color="primary"
@@ -115,6 +123,7 @@ function ProductList(props) {
             </Button>
             <Button
               onClick={deleteHandler}
+              className={classes.buttton}
               size="medium"
               variant="outlined"
               color="primary"
