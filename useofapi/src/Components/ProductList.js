@@ -20,6 +20,11 @@ const useStyles = makeStyles({
   button: {
     marginLeft: "15%",
     marginRight: "15%",
+    color: "#04b4c4",
+    borderColor: "#04b4c4",
+  },
+  detailsButton: {
+    backgroundColor: "#04b4c4",
   },
 });
 
@@ -66,6 +71,7 @@ function ProductList(props) {
               </Button>
               <Button
                 onClick={() => buttonHanlder(product.id)}
+                className={classes.detailsButton}
                 variant="contained"
                 color="primary"
               >

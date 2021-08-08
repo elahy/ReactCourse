@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   input1: {
     margin: theme.spacing(1),
     marginLeft: "45%",
+    backgroundColor: "#04b4c4",
   },
   input2: {
     margin: theme.spacing(1),

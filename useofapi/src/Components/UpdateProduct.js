@@ -20,7 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     margin: theme.spacing(1),
-    marginLeft: "45%",
+    marginLeft: "40%",
+    backgroundColor: "#04b4c4",
+  },
+  input2: {
+    margin: theme.spacing(1),
+    marginLeft: 15,
+  },
+  head: {
+    margin: theme.spacing(1),
   },
   formControl: {
     margin: theme.spacing(1),
@@ -69,7 +77,12 @@ function UpdateProduct(props) {
         <Loader />
       ) : (
         <div>
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography
+            variant="h3"
+            align="center"
+            className={classes.head}
+            gutterBottom
+          >
             Edit Product info
           </Typography>
           <form className={classes.root} noValidate autoComplete="off">
@@ -149,7 +162,7 @@ function UpdateProduct(props) {
           </Button>
           <Button
             onClick={handleSubmit}
-            className={classes.input}
+            className={classes.input2}
             variant="contained"
             color="secondary"
           >

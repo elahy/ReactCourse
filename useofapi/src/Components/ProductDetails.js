@@ -20,12 +20,22 @@ function ProductList(props) {
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
     root: {
-      maxWidth: "50%",
+      maxWidth: "45%",
       minWidth: "40%",
       alignContent: "center",
-      marginLeft: "27%",
+      margin: "2% 27%",
     },
-    buttton: {},
+    buttton: {
+      color: "#04b4c4",
+      borderColor: "#04b4c4",
+      margin: "2% 4%",
+      display: "block",
+    },
+    buttton1: {
+      backgroundColor: "#04b4c4",
+      margin: "2% 4%",
+      display: "block",
+    },
   });
   const classes = useStyles();
   useEffect(() => {
@@ -114,21 +124,21 @@ function ProductList(props) {
             </Button>
             <Button
               onClick={updateHandler}
-              className={classes.buttton}
+              className={classes.buttton1}
               size="medium"
-              variant="outlined"
+              variant="contained"
               color="primary"
             >
-              Edit Product
+              Edit
             </Button>
             <Button
               onClick={deleteHandler}
-              className={classes.buttton}
+              className={classes.buttton1}
               size="medium"
-              variant="outlined"
+              variant="contained"
               color="primary"
             >
-              Delete Product
+              Delete
             </Button>
           </CardActions>
         </Card>
