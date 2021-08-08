@@ -5,10 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,12 +32,9 @@ const useStyles = makeStyles((theme) => ({
 function UpdateProduct(props) {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
-  const [id, setId] = useState(1);
+  const pro = useParams();
   const classes = useStyles();
-  const [product, setProduct] = useState(props.proList);
-  const handleSelect = (event) => {
-    setId(event.target.value);
-  };
+  const [product, setProduct] = useState(props.proList[pro.id - 1]);
   const handleChange = (event) => {
     const value = event.target.value;
     setProduct({
@@ -52,7 +46,7 @@ function UpdateProduct(props) {
   const handleSubmit = (e) => {
     setLoader(true);
     axios
-      .put(`https://fakestoreapi.com/products/${id}`, {
+      .put(`https://fakestoreapi.com/products/${pro.id}`, {
         title: product.title,
         price: product.price,
         description: product.dexcription,
@@ -63,17 +57,11 @@ function UpdateProduct(props) {
         if (response.status === 200) {
           console.log("Success");
           history.push("/success");
-        } else {
-          console.log("Failed");
         }
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    console.log(product, "===product set done");
-    e.preventDefault();
   };
   return (
     <>
@@ -81,51 +69,10 @@ function UpdateProduct(props) {
         <Loader />
       ) : (
         <div>
-          <Typography variant="h4" align="center" gutterBottom>
-            Select a product
-          </Typography>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">
-              Product Id
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={id}
-              onChange={handleSelect}
-              label="Product Id"
-            >
-              <MenuItem value={1}>Product 1</MenuItem>
-              <MenuItem value={2}>Product 2</MenuItem>
-              <MenuItem value={3}>Product 3</MenuItem>
-              <MenuItem value={4}>Product 4</MenuItem>
-              <MenuItem value={5}>Product 5</MenuItem>
-              <MenuItem value={6}>Product 6</MenuItem>
-              <MenuItem value={7}>Product 7</MenuItem>
-              <MenuItem value={8}>Product 8</MenuItem>
-              <MenuItem value={9}>Product 9</MenuItem>
-              <MenuItem value={10}>Product 10</MenuItem>
-              <MenuItem value={11}>Product 11</MenuItem>
-              <MenuItem value={12}>Product 12</MenuItem>
-              <MenuItem value={13}>Product 13</MenuItem>
-              <MenuItem value={14}>Product 14</MenuItem>
-              <MenuItem value={15}>Product 15</MenuItem>
-              <MenuItem value={16}>Product 16</MenuItem>
-              <MenuItem value={17}>Product 17</MenuItem>
-              <MenuItem value={18}>Product 18</MenuItem>
-              <MenuItem value={19}>Product 19</MenuItem>
-              <MenuItem value={20}>Product 20</MenuItem>
-            </Select>
-          </FormControl>
           <Typography variant="h2" align="center" gutterBottom>
             Edit Product info
           </Typography>
-          <form
-            onSubmit={handleSubmit}
-            className={classes.root}
-            noValidate
-            autoComplete="off"
-          >
+          <form className={classes.root} noValidate autoComplete="off">
             <div>
               <TextField
                 id="outlined-multiline-flexible"
@@ -136,7 +83,7 @@ function UpdateProduct(props) {
                 variant="outlined"
                 type="text"
                 name="title"
-                defaultValue={product[id - 1].title}
+                defaultValue={product.title}
                 onChange={handleChange}
               />
             </div>
@@ -149,7 +96,7 @@ function UpdateProduct(props) {
                 variant="outlined"
                 type="text"
                 name="price"
-                defaultValue={product[id - 1].price}
+                defaultValue={product.price}
                 onChange={handleChange}
               />
               <div />
@@ -162,7 +109,7 @@ function UpdateProduct(props) {
                   variant="outlined"
                   type="text"
                   name="description"
-                  defaultValue={product[id - 1].description}
+                  defaultValue={product.description}
                   onChange={handleChange}
                 />
               </div>
@@ -175,7 +122,7 @@ function UpdateProduct(props) {
                   variant="outlined"
                   type="text"
                   name="image"
-                  defaultValue={product[id - 1].image}
+                  defaultValue={product.image}
                   onChange={handleChange}
                 />
               </div>
@@ -186,20 +133,28 @@ function UpdateProduct(props) {
                   variant="outlined"
                   type="text"
                   name="category"
-                  defaultValue={product[id - 1].category}
+                  defaultValue={product.category}
                   onChange={handleChange}
                 />
               </div>
             </div>
-            <Button
-              onClick={handleSubmit}
-              className={classes.input}
-              variant="contained"
-              color="primary"
-            >
-              Submit
-            </Button>
           </form>
+          <Button
+            onClick={handleSubmit}
+            className={classes.input}
+            variant="contained"
+            color="primary"
+          >
+            Update
+          </Button>
+          <Button
+            onClick={handleSubmit}
+            className={classes.input}
+            variant="contained"
+            color="secondary"
+          >
+            Cancel
+          </Button>
         </div>
       )}
     </>

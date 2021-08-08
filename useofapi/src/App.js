@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Components/Loader";
 import ProductList from "./Components/ProductList";
-import DeleteProduct from "./Components/DeleteProduct";
 import AddProduct from "./Components/AddProduct";
 import Policy from "./Components/Policy";
 import NotFound from "./Components/NotFound";
@@ -38,24 +37,24 @@ function App() {
             <nav>
               <ul className="nav_links">
                 <li>
+                  <Link to="/" className="navbtn">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="navbtn">
+                    Contact
+                  </Link>
+                </li>
+                <li>
                   <Link to="/add" className="navbtn">
-                    Add Products
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/update" className="navbtn">
-                    Update Products
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/delete" className="navbtn">
-                    Delete Products
+                    Add Product
                   </Link>
                 </li>
               </ul>
             </nav>
-            <Link to="/" className="homebtn">
-              Home
+            <Link to="/signin" className="homebtn">
+              Sign In
             </Link>
           </header>
           <main>
@@ -66,13 +65,10 @@ function App() {
               <Route exact path="/product/:id">
                 <ProductDetails />
               </Route>
-              <Route path="/delete">
-                <DeleteProduct />
-              </Route>
               <Route path="/add">
                 <AddProduct />
               </Route>
-              <Route path="/update">
+              <Route path="/update/:id">
                 <UpdateProduct proList={productList} />
               </Route>
               <Route path="/PrivacyPolicy">

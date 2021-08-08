@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
 import { useHistory } from "react-router";
+// import { Link } from "react-router-dom";
 
 function ProductList(props) {
   const [loader, setLoader] = useState(true);
@@ -19,9 +20,10 @@ function ProductList(props) {
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
     root: {
-      maxWidth: "40%",
+      maxWidth: "50%",
+      minWidth: "40%",
       alignContent: "center",
-      marginLeft: "30%",
+      marginLeft: "27%",
     },
   });
   const classes = useStyles();
@@ -30,7 +32,7 @@ function ProductList(props) {
       .get(`https://fakestoreapi.com/products/${pro.id}`)
       .then((response) => {
         setProduct(response.data);
-        setTimeout(() => setLoader(false));
+        setLoader(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -39,6 +41,23 @@ function ProductList(props) {
 
   const buttonHandler = () => {
     history.push("/");
+  };
+  const updateHandler = () => {
+    history.push(`/update/${product.id}`);
+  };
+  const deleteHandler = () => {
+    setLoader(true);
+    axios
+      .delete(`https://fakestoreapi.com/products/${pro.id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Success");
+          history.push("/success");
+        } else {
+          console.log("Failed");
+        }
+        console.log(response);
+      });
   };
 
   return (
@@ -85,6 +104,22 @@ function ProductList(props) {
               color="primary"
             >
               Go Back
+            </Button>
+            <Button
+              onClick={updateHandler}
+              size="medium"
+              variant="outlined"
+              color="primary"
+            >
+              Edit Product
+            </Button>
+            <Button
+              onClick={deleteHandler}
+              size="medium"
+              variant="outlined"
+              color="primary"
+            >
+              Delete Product
             </Button>
           </CardActions>
         </Card>
