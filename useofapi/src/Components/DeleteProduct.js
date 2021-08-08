@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
@@ -13,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display: "block",
     marginTop: theme.spacing(2),
-    marginLeft: "30%",
+    marginLeft: "45%",
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    marginLeft: "30%",
+    marginLeft: "45%",
   },
 }));
 
@@ -52,6 +53,9 @@ function DeleteProduct() {
         <Loader />
       ) : (
         <div>
+          <Typography variant="h4" align="center" gutterBottom>
+            Select a product
+          </Typography>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Product Id

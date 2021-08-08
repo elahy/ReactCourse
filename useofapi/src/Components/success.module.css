@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap");
 .main {
   text-align: center;
-  padding: 40px 0;
+  padding: 12% 0;
   background: #ebf0f5;
+  height: 100vh;
 }
 .htag {
   color: #88b04b;

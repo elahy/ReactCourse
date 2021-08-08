@@ -10,6 +10,7 @@ import Policy from "./Components/Policy";
 import NotFound from "./Components/NotFound";
 import ProductDetails from "./Components/ProductDetails";
 import Success from "./Components/Success";
+import UpdateProduct from "./Components/UpdateProduct";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -19,11 +20,11 @@ function App() {
       .get("https://fakestoreapi.com/products")
       .then((response) => {
         setProductList(response.data);
+        setLoader(false);
       })
       .catch((error) => {
         console.log(error, "===response");
       });
-    setTimeout(() => setLoader(false), 1500);
   }, []);
   console.log(productList, "===products");
   return (
@@ -72,7 +73,7 @@ function App() {
                 <AddProduct />
               </Route>
               <Route path="/update">
-                <AddProduct />
+                <UpdateProduct proList={productList} />
               </Route>
               <Route path="/PrivacyPolicy">
                 <Policy />

@@ -10,7 +10,7 @@ function Success() {
         </div>
         <h1 className={styles.htag}>Success</h1>
         <p className={styles.ptag}>
-          New Product is added to database.
+          Your request has been performed!
           <br /> You can continue your work!
         </p>
       </div>
