@@ -8,11 +8,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    width: 400,
-    margin: "5%",
+    width: 300,
+    margin: "1%",
   },
   media: {
     height: 400,
@@ -39,48 +40,56 @@ function ProductList(props) {
   };
   return (
     <div>
-      {productList.map((product, index) => (
-        <div key={index} className="productList">
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={product.image}
-                title={product.title}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {product.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {product.category}
-                </Typography>
-                <Typography gutterBottom variant="h5" component="h4">
-                  Price: ${product.price}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button
-                // size="small"
-                variant="outlined"
-                color="primary"
-                className={classes.button}
-              >
-                Share
-              </Button>
-              <Button
-                onClick={() => buttonHanlder(product.id)}
-                className={classes.detailsButton}
-                variant="contained"
-                color="primary"
-              >
-                See Details
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
-      ))}
+      <Grid container spacing={3}>
+        <Grid item xs={0} lg={1}></Grid>
+        <Grid item xs={12} lg={10}>
+          {productList.map((product, index) => (
+            <div key={index} className="productList">
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={product.image}
+                    title={product.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {product.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {product.category}
+                    </Typography>
+                    <Typography gutterBottom variant="h5" component="h4">
+                      Price: ${product.price}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}
+                  >
+                    Share
+                  </Button>
+                  <Button
+                    onClick={() => buttonHanlder(product.id)}
+                    className={classes.detailsButton}
+                    variant="contained"
+                    color="primary"
+                  >
+                    See Details
+                  </Button>
+                </CardActions>
+              </Card>
+            </div>
+          ))}
+        </Grid>
+      </Grid>
     </div>
   );
 }

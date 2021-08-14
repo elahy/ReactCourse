@@ -12,8 +12,7 @@ code {
     monospace;
 }
 .productList {
-  padding: 30px;
-  /* margin: 0 20px; */
+  padding: 10px;
   align-content: center;
   position: relative;
   display: inline-block;

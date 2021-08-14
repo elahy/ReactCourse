@@ -82,7 +82,7 @@ function App() {
               </Route>
             </Switch>
           </main>
-          {/* <footer>
+          <footer>
             <div className="bottom-details">
               <span className="copyright_text">
                 Copyright © 2021 Ecommerce.
@@ -93,7 +93,7 @@ function App() {
                 </Link>
               </span>
             </div>
-          </footer> */}
+          </footer>
         </>
       )}
     </>
