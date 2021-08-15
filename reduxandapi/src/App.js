@@ -10,6 +10,7 @@ import NotFound from "./Components/NotFound";
 import ProductDetails from "./Components/ProductDetails";
 import Success from "./Components/Success";
 import UpdateProduct from "./Components/UpdateProduct";
+import { store } from "./store/store";
 
 function App() {
   const [productList, setProductList] = useState([]);
