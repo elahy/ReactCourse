@@ -1,3 +1,9 @@
-const setProductList = (productList) => {
-  return { type: "update_product_list", payload: productList };
-};
+export const setListofProduct = (productList) => ({
+  type: "UPDATE_PRODUCT_LIST",
+  payload: productList,
+});
+
+export const setCurrentProduct = (productId) => ({
+  type: "SET_CURRENT_PRODUCT",
+  payload: productId,
+});

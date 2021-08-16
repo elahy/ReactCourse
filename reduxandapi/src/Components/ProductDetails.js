@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,12 +10,13 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 // import { Link } from "react-router-dom";
 
-function ProductList(props) {
+function ProductList() {
   const [loader, setLoader] = useState(true);
-  const pro = useParams();
+  const { currentProduct } = useSelector((store) => store);
   const history = useHistory();
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
@@ -40,7 +41,7 @@ function ProductList(props) {
   const classes = useStyles();
   useEffect(() => {
     axios
-      .get(`https://fakestoreapi.com/products/${pro.id}`)
+      .get(`https://fakestoreapi.com/products/${currentProduct}`)
       .then((response) => {
         setProduct(response.data);
         setLoader(false);
@@ -48,7 +49,7 @@ function ProductList(props) {
       .catch(function (error) {
         console.log(error);
       });
-  }, [pro]);
+  }, [currentProduct]);
 
   const buttonHandler = () => {
     history.push("/");
@@ -59,7 +60,7 @@ function ProductList(props) {
   const deleteHandler = () => {
     setLoader(true);
     axios
-      .delete(`https://fakestoreapi.com/products/${pro.id}`)
+      .delete(`https://fakestoreapi.com/products/${currentProduct}`)
       .then((response) => {
         if (response.status === 200) {
           console.log("Success");

@@ -9,6 +9,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setCurrentProduct } from "../store/action";
 
 const useStyles = makeStyles({
   root: {
@@ -29,19 +32,22 @@ const useStyles = makeStyles({
   },
 });
 
-function ProductList(props) {
+function ProductList() {
   const history = useHistory();
-  const productList = props.proList;
-  console.log(productList);
+  const dispatch = useDispatch();
+  const reduxStore = useSelector((store) => store);
+  const productList = reduxStore.productList;
+  console.log(reduxStore.productList);
   const classes = useStyles();
   const buttonHanlder = (e) => {
     console.log(e, "===event");
+    dispatch(setCurrentProduct(e));
     history.push(`/product/${e}`);
   };
   return (
     <div>
       <Grid container spacing={3}>
-        <Grid item xs={0} lg={1}></Grid>
+        <Grid item xs={false} lg={1}></Grid>
         <Grid item xs={12} lg={10}>
           {productList.map((product, index) => (
             <div key={index} className="productList">
