@@ -12,6 +12,7 @@ import Success from "./Components/Success";
 import UpdateProduct from "./Components/UpdateProduct";
 import { useDispatch } from "react-redux";
 import { setListofProduct } from "./store/action";
+import Home from "./Components/Home";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -65,6 +66,9 @@ function App() {
           <main>
             <Switch>
               <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/products">
                 <ProductList />
               </Route>
               <Route exact path="/product/:id">

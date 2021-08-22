@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./Policy.module.css";
 
 function Policy() {
   return (
-    <div>
-      <h1>Privacy Policy</h1>
-      <p>
+    <div className={styles.root}>
+      <h1 className={styles.head}>Privacy Policy</h1>
+      <p className={styles.para}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Purus in massa
         tempor nec feugiat nisl pretium fusce id. Feugiat scelerisque varius
