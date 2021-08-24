@@ -1,6 +1,5 @@
 import "./App.css";
 import { Switch, Route, Link } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Components/Loader";
 import ProductList from "./Components/ProductList";
@@ -10,28 +9,13 @@ import NotFound from "./Components/NotFound";
 import ProductDetails from "./Components/ProductDetails";
 import Success from "./Components/Success";
 import UpdateProduct from "./Components/UpdateProduct";
-import { useDispatch } from "react-redux";
-import { setListofProduct } from "./store/action/productAction";
 import Home from "./Components/Home";
 
 function App() {
-  const [productList, setProductList] = useState([]);
-  const dispatch = useDispatch();
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((response) => {
-        setProductList(response.data);
-
-        setLoader(false);
-        dispatch(setListofProduct(response.data));
-      })
-      .catch((error) => {
-        console.log(error, "===response");
-      });
-  }, [dispatch]);
-  console.log(productList, "===products");
+    setLoader(false);
+  }, []);
   return (
     <>
       {loader ? (
@@ -78,7 +62,7 @@ function App() {
                 <AddProduct />
               </Route>
               <Route path="/update/:id">
-                <UpdateProduct proList={productList} />
+                <UpdateProduct />
               </Route>
               <Route path="/PrivacyPolicy">
                 <Policy />

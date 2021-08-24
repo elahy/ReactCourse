@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,7 +11,10 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setCurrentProduct } from "../store/action/productAction";
+import {
+  requestProductList,
+  setCurrentProduct,
+} from "../store/action/productAction";
 
 const useStyles = makeStyles({
   root: {
@@ -33,14 +36,18 @@ const useStyles = makeStyles({
 });
 
 function ProductList() {
+  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(requestProductList());
+  }, [dispatch]);
+
   const { listStore } = useSelector((store) => store);
   const productList = listStore.productList;
-  console.log(listStore, "====list");
-  const classes = useStyles();
+
   const buttonHanlder = (e) => {
-    console.log(e, "===event");
     dispatch(setCurrentProduct(e));
     history.push(`/product/${e}`);
   };

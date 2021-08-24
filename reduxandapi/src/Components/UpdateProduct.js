@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { requestProductDetails } from "../store/action/productAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,12 +39,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function UpdateProduct(props) {
-  const [loader, setLoader] = useState(false);
+function UpdateProduct() {
+  const classes = useStyles();
+  const [loader, setLoader] = useState(true);
+  const dispatch = useDispatch();
   const history = useHistory();
   const pro = useParams();
-  const classes = useStyles();
-  const [product, setProduct] = useState(props.proList[pro.id - 1]);
+  console.log(pro.id, "===pro.id");
+  // const { currentProduct } = useSelector((store) => store.detailStore);
+
+  useEffect(() => {
+    if (!currentProduct) {
+      dispatch(requestProductDetails(pro.id));
+      setTimeout(() => {
+        setLoader(false);
+      }, 10000);
+    } else setLoader(false);
+  }, []);
+  const { currentProduct } = useSelector((store) => store.detailStore);
+  const [product, setProduct] = useState(currentProduct);
   const handleChange = (event) => {
     const value = event.target.value;
     setProduct({

@@ -10,52 +10,54 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Loader from "./Loader";
-import { useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { requestProductDetails } from "../store/action/productAction";
 // import { Link } from "react-router-dom";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "45%",
+    minWidth: "40%",
+    alignContent: "center",
+    margin: "2% 27%",
+  },
+  buttton: {
+    color: "#04b4c4",
+    borderColor: "#04b4c4",
+    margin: "2% 4%",
+    display: "block",
+  },
+  buttton1: {
+    backgroundColor: "#04b4c4",
+    margin: "2% 4%",
+    display: "block",
+  },
+});
 
 function ProductList() {
   const [loader, setLoader] = useState(true);
   const { currentProduct } = useSelector((store) => store.detailStore);
+  console.log(currentProduct, "===currentProduct");
   const history = useHistory();
-  const [product, setProduct] = useState([]);
-  const useStyles = makeStyles({
-    root: {
-      maxWidth: "45%",
-      minWidth: "40%",
-      alignContent: "center",
-      margin: "2% 27%",
-    },
-    buttton: {
-      color: "#04b4c4",
-      borderColor: "#04b4c4",
-      margin: "2% 4%",
-      display: "block",
-    },
-    buttton1: {
-      backgroundColor: "#04b4c4",
-      margin: "2% 4%",
-      display: "block",
-    },
-  });
+  const dispatch = useDispatch();
+  const id = useParams();
+  console.log(id.id, "===id");
+
   const classes = useStyles();
   useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/${currentProduct}`)
-      .then((response) => {
-        setProduct(response.data);
-        setLoader(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [currentProduct]);
+    dispatch(requestProductDetails(id.id));
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
+  }, [dispatch, id]);
 
   const buttonHandler = () => {
     history.push("/");
   };
   const updateHandler = () => {
-    history.push(`/update/${product.id}`);
+    history.push(`/update/${currentProduct.id}`);
   };
   const deleteHandler = () => {
     setLoader(true);
@@ -81,13 +83,13 @@ function ProductList() {
           <CardActionArea>
             <CardMedia
               component="img"
-              alt={product.title}
-              image={product.image}
-              title={product.title}
+              alt={currentProduct.title}
+              image={currentProduct.image}
+              title={currentProduct.title}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {product.title}
+                {currentProduct.title}
               </Typography>
               <Typography
                 gutterBottom
@@ -95,13 +97,13 @@ function ProductList() {
                 color="textSecondary"
                 component="p"
               >
-                {product.description}
+                {currentProduct.description}
               </Typography>
               <Typography variant="h6" color="textSecondary" component="p">
-                Type: {product.category}
+                Type: {currentProduct.category}
               </Typography>
               <Typography variant="h5" color="textPrimary" component="p">
-                Price: ${product.price}
+                Price: ${currentProduct.price}
               </Typography>
             </CardContent>
           </CardActionArea>
