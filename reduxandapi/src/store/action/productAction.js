@@ -1,9 +1,11 @@
+import { ActionTypes } from "../actionTypes";
+
 export const setListofProduct = (productList) => ({
-  type: "UPDATE_PRODUCT_LIST",
+  type: ActionTypes.UPDATE_PRODUCT_LIST,
   payload: productList,
 });
 
 export const setCurrentProduct = (productId) => ({
-  type: "SET_CURRENT_PRODUCT",
+  type: ActionTypes.SET_CURRENT_PRODUCT,
   payload: productId,
 });
