@@ -11,7 +11,7 @@ import ProductDetails from "./Components/ProductDetails";
 import Success from "./Components/Success";
 import UpdateProduct from "./Components/UpdateProduct";
 import { useDispatch } from "react-redux";
-import { setListofProduct } from "./store/action";
+import { setListofProduct } from "./store/action/productAction";
 import Home from "./Components/Home";
 
 function App() {

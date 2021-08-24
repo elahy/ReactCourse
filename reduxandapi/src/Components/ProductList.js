@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setCurrentProduct } from "../store/action";
+import { setCurrentProduct } from "../store/action/productAction";
 
 const useStyles = makeStyles({
   root: {
@@ -35,9 +35,9 @@ const useStyles = makeStyles({
 function ProductList() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const reduxStore = useSelector((store) => store);
-  const productList = reduxStore.productList;
-  console.log(reduxStore.productList);
+  const { listStore } = useSelector((store) => store);
+  const productList = listStore.productList;
+  console.log(listStore, "====list");
   const classes = useStyles();
   const buttonHanlder = (e) => {
     console.log(e, "===event");

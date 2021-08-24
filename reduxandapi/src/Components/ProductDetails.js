@@ -16,7 +16,7 @@ import { useHistory } from "react-router";
 
 function ProductList() {
   const [loader, setLoader] = useState(true);
-  const { currentProduct } = useSelector((store) => store);
+  const { detailStore } = useSelector((store) => store);
   const history = useHistory();
   const [product, setProduct] = useState([]);
   const useStyles = makeStyles({
@@ -41,7 +41,7 @@ function ProductList() {
   const classes = useStyles();
   useEffect(() => {
     axios
-      .get(`https://fakestoreapi.com/products/${currentProduct}`)
+      .get(`https://fakestoreapi.com/products/${detailStore.currentProduct}`)
       .then((response) => {
         setProduct(response.data);
         setLoader(false);
@@ -49,7 +49,7 @@ function ProductList() {
       .catch(function (error) {
         console.log(error);
       });
-  }, [currentProduct]);
+  }, [detailStore.currentProduct]);
 
   const buttonHandler = () => {
     history.push("/");
@@ -60,7 +60,7 @@ function ProductList() {
   const deleteHandler = () => {
     setLoader(true);
     axios
-      .delete(`https://fakestoreapi.com/products/${currentProduct}`)
+      .delete(`https://fakestoreapi.com/products/${detailStore.currentProduct}`)
       .then((response) => {
         if (response.status === 200) {
           console.log("Success");
