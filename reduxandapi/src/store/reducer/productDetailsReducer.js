@@ -5,10 +5,12 @@ const initialState = {
 };
 
 const productDetailsReducer = (state = initialState, action) => {
-  if (action.type === ActionTypes.SET_CURRENT_PRODUCT) {
-    return { ...state, currentProduct: action.payload };
-  } else {
-    return state;
+  switch (action.type) {
+    case ActionTypes.SET_CURRENT_PRODUCT:
+      return { ...state, currentProduct: action.payload };
+
+    default:
+      return state;
   }
 };
 

@@ -5,10 +5,12 @@ const initialState = {
 };
 
 const productlistReducer = (state = initialState, action) => {
-  if (action.type === ActionTypes.UPDATE_PRODUCT_LIST) {
-    return { ...state, productList: action.payload };
-  } else {
-    return state;
+  switch (action.type) {
+    case ActionTypes.UPDATE_PRODUCT_LIST:
+      return { ...state, productList: action.payload };
+
+    default:
+      return state;
   }
 };
 
