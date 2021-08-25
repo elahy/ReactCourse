@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -8,7 +7,10 @@ import Loader from "./Loader";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { requestProductDetails } from "../store/action/productAction";
+import {
+  requestProductDetails,
+  updateProduct,
+} from "../store/action/productAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,19 +47,20 @@ function UpdateProduct() {
   const dispatch = useDispatch();
   const history = useHistory();
   const pro = useParams();
-  console.log(pro.id, "===pro.id");
-  // const { currentProduct } = useSelector((store) => store.detailStore);
+  // console.log(pro.id, "===pro.id");
 
   useEffect(() => {
-    if (!currentProduct) {
-      dispatch(requestProductDetails(pro.id));
-      setTimeout(() => {
-        setLoader(false);
-      }, 10000);
-    } else setLoader(false);
-  }, []);
-  const { currentProduct } = useSelector((store) => store.detailStore);
+    dispatch(requestProductDetails(pro.id));
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
+  }, [dispatch, pro.id]);
+
+  const { currentProduct, productEdited } = useSelector(
+    (store) => store.productStore
+  );
   const [product, setProduct] = useState(currentProduct);
+
   const handleChange = (event) => {
     const value = event.target.value;
     setProduct({
@@ -67,25 +70,19 @@ function UpdateProduct() {
   };
 
   const handleSubmit = (e) => {
+    dispatch(updateProduct(product));
     setLoader(true);
-    axios
-      .put(`https://fakestoreapi.com/products/${pro.id}`, {
-        title: product.title,
-        price: product.price,
-        description: product.dexcription,
-        image: product.image,
-        category: product.category,
-      })
-      .then(function (response) {
-        if (response.status === 200) {
-          console.log("Success");
-          history.push("/success");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    setTimeout(() => {
+      if (productEdited === 200) {
+        history.push("/success");
+      } else {
+        console.log(productEdited, "Edit unsuccessfull");
+      }
+      setLoader(false);
+    }, 20000);
   };
+
   return (
     <>
       {loader ? (

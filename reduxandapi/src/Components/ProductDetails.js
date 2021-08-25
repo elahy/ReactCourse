@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -38,20 +37,21 @@ const useStyles = makeStyles({
 
 function ProductList() {
   const [loader, setLoader] = useState(true);
-  const { currentProduct } = useSelector((store) => store.detailStore);
-  console.log(currentProduct, "===currentProduct");
+  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const id = useParams();
-  console.log(id.id, "===id");
+  // console.log(id.id, "===id");
 
-  const classes = useStyles();
   useEffect(() => {
     dispatch(requestProductDetails(id.id));
     setTimeout(() => {
       setLoader(false);
     }, 1000);
   }, [dispatch, id]);
+
+  const { currentProduct } = useSelector((store) => store.productStore);
+  // console.log(currentProduct, "===currentProduct");
 
   const buttonHandler = () => {
     history.push("/");

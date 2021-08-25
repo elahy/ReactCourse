@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,10 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  requestProductList,
-  setCurrentProduct,
-} from "../store/action/productAction";
+import { requestProductList } from "../store/action/productAction";
+import Loader from "./Loader";
 
 const useStyles = makeStyles({
   root: {
@@ -39,71 +37,80 @@ function ProductList() {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     dispatch(requestProductList());
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
   }, [dispatch]);
 
-  const { listStore } = useSelector((store) => store);
-  const productList = listStore.productList;
+  const { productStore } = useSelector((store) => store);
+  const productList = productStore.productList;
 
   const buttonHanlder = (e) => {
-    dispatch(setCurrentProduct(e));
     history.push(`/product/${e}`);
   };
   return (
-    <div>
-      <Grid container spacing={3}>
-        <Grid item xs={false} lg={1}></Grid>
-        <Grid item xs={12} lg={10}>
-          {productList.map((product, index) => (
-            <div key={index} className="productList">
-              <Card className={classes.root}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={product.image}
-                    title={product.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {product.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {product.category}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h4">
-                      Price: ${product.price}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    className={classes.button}
-                  >
-                    Share
-                  </Button>
-                  <Button
-                    onClick={() => buttonHanlder(product.id)}
-                    className={classes.detailsButton}
-                    variant="contained"
-                    color="primary"
-                  >
-                    See Details
-                  </Button>
-                </CardActions>
-              </Card>
-            </div>
-          ))}
-        </Grid>
-      </Grid>
-    </div>
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <div>
+          <Grid container spacing={3}>
+            <Grid item xs={false} lg={1}></Grid>
+            <Grid item xs={12} lg={10}>
+              {productList.map((product, index) => (
+                <div key={index} className="productList">
+                  <Card className={classes.root}>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={product.image}
+                        title={product.title}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {product.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                        >
+                          {product.category}
+                        </Typography>
+                        <Typography gutterBottom variant="h5" component="h4">
+                          Price: ${product.price}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        Share
+                      </Button>
+                      <Button
+                        onClick={() => buttonHanlder(product.id)}
+                        className={classes.detailsButton}
+                        variant="contained"
+                        color="primary"
+                      >
+                        See Details
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              ))}
+            </Grid>
+          </Grid>
+        </div>
+      )}
+    </>
   );
 }
 
