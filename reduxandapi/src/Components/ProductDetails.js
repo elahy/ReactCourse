@@ -12,7 +12,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import {
-  deleteProduct,
+  requestDeleteProduct,
   requestProductDetails,
 } from "../store/action/productAction";
 // import { Link } from "react-router-dom";
@@ -64,9 +64,10 @@ function ProductList() {
     history.push(`/update/${currentProduct.id}`);
   };
   const deleteHandler = () => {
-    dispatch(deleteProduct(currentProduct.id));
+    dispatch(requestDeleteProduct(currentProduct.id));
     setLoader(true);
     setTimeout(() => {
+      console.log(productDeleted, "====delete data check");
       setLoader(false);
       if (productDeleted.status === 200) {
         console.log("Success");
@@ -74,7 +75,7 @@ function ProductList() {
       } else {
         console.log("Failed");
       }
-    }, 10000);
+    }, 3000);
   };
 
   return (

@@ -15,6 +15,10 @@ export const editProduct = (response) => ({
   type: ActionTypes.UPDATE_A_PRODUCT,
   payload: response,
 });
+export const deleteProduct = (response) => ({
+  type: ActionTypes.DELETE_A_PRODUCT,
+  payload: response,
+});
 
 export const requestProductList = () => {
   return async (dispatch) => {
@@ -32,12 +36,12 @@ export const requestProductDetails = (productId) => {
   };
 };
 
-export const deleteProduct = (productId) => {
+export const requestDeleteProduct = (productId) => {
   return async (dispatch) => {
     const response = await axios.delete(
       `https://fakestoreapi.com/products/${productId}`
     );
-    dispatch(setCurrentProduct(response));
+    dispatch(deleteProduct(response));
     console.log(response, "===response from delete");
   };
 };
