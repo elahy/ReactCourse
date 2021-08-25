@@ -80,7 +80,7 @@ function UpdateProduct() {
         console.log(productEdited.status, "Edit unsuccessfull");
       }
       setLoader(false);
-    }, 20000);
+    }, 2000);
   };
 
   return (
