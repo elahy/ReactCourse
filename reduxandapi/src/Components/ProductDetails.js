@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -12,7 +11,10 @@ import Loader from "./Loader";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { requestProductDetails } from "../store/action/productAction";
+import {
+  deleteProduct,
+  requestProductDetails,
+} from "../store/action/productAction";
 // import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -50,7 +52,9 @@ function ProductList() {
     }, 1000);
   }, [dispatch, id]);
 
-  const { currentProduct } = useSelector((store) => store.productStore);
+  const { currentProduct, productDeleted } = useSelector(
+    (store) => store.productStore
+  );
   // console.log(currentProduct, "===currentProduct");
 
   const buttonHandler = () => {
@@ -60,18 +64,17 @@ function ProductList() {
     history.push(`/update/${currentProduct.id}`);
   };
   const deleteHandler = () => {
+    dispatch(deleteProduct(currentProduct.id));
     setLoader(true);
-    axios
-      .delete(`https://fakestoreapi.com/products/${currentProduct}`)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log("Success");
-          history.push("/success");
-        } else {
-          console.log("Failed");
-        }
-        console.log(response);
-      });
+    setTimeout(() => {
+      setLoader(false);
+      if (productDeleted.status === 200) {
+        console.log("Success");
+        history.push("/success");
+      } else {
+        console.log("Failed");
+      }
+    }, 10000);
   };
 
   return (

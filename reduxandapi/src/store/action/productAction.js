@@ -32,6 +32,16 @@ export const requestProductDetails = (productId) => {
   };
 };
 
+export const deleteProduct = (productId) => {
+  return async (dispatch) => {
+    const response = await axios.delete(
+      `https://fakestoreapi.com/products/${productId}`
+    );
+    dispatch(setCurrentProduct(response));
+    console.log(response, "===response from delete");
+  };
+};
+
 export const updateProduct = (product) => {
   return async (dispatch) => {
     const response = await axios.put(
@@ -45,5 +55,6 @@ export const updateProduct = (product) => {
       }
     );
     dispatch(editProduct(response));
+    console.log(response, "===response from update");
   };
 };

@@ -74,10 +74,10 @@ function UpdateProduct() {
     setLoader(true);
 
     setTimeout(() => {
-      if (productEdited === 200) {
+      if (productEdited.status === 200) {
         history.push("/success");
       } else {
-        console.log(productEdited, "Edit unsuccessfull");
+        console.log(productEdited.status, "Edit unsuccessfull");
       }
       setLoader(false);
     }, 20000);
