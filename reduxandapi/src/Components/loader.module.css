@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+.whole {
+  min-height: 90vh;
+}
 
 .loader {
   width: 70px;
