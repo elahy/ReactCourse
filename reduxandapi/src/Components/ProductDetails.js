@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -11,11 +11,8 @@ import Loader from "./Loader";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import {
-  requestDeleteProduct,
-  requestProductDetails,
-} from "../store/action/productAction";
-// import { Link } from "react-router-dom";
+import { requestProductDetails } from "../store/action/productAction";
+import { setLoaderValue } from "../store/action/loaderAction";
 
 const useStyles = makeStyles({
   root: {
@@ -38,62 +35,48 @@ const useStyles = makeStyles({
 });
 
 function ProductList() {
-  const [loader, setLoader] = useState(true);
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const id = useParams();
-  // console.log(id.id, "===id");
+  const param = useParams();
 
   useEffect(() => {
-    dispatch(requestProductDetails(id.id));
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
-  }, [dispatch, id]);
+    console.log("===Console in useEffect1");
+    dispatch(setLoaderValue(true));
+    dispatch(requestProductDetails(param.id));
+    console.log("===Console in useEffect2");
+  }, [dispatch, param.id]);
 
-  const { currentProduct, productDeleted } = useSelector(
-    (store) => store.productStore
-  );
-  // console.log(currentProduct, "===currentProduct");
+  const { currentProduct } = useSelector((store) => store.productStore);
+  console.log(currentProduct, "===currentProduct");
+  const { loaderStore } = useSelector((store) => store);
 
   const buttonHandler = () => {
-    history.push("/");
+    history.push("/products");
   };
   const updateHandler = () => {
     history.push(`/update/${currentProduct.id}`);
   };
   const deleteHandler = () => {
-    dispatch(requestDeleteProduct(currentProduct.id));
-    setLoader(true);
-    setTimeout(() => {
-      console.log(productDeleted, "====delete data check");
-      setLoader(false);
-      if (productDeleted.status === 200) {
-        console.log("Success");
-        history.push("/success");
-      } else {
-        console.log("Failed");
-      }
-    }, 3000);
+    history.push(`/delete/${currentProduct.id}`);
   };
 
   return (
     <>
-      {loader ? (
+      {loaderStore.loader ? (
         <Loader />
       ) : (
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
               component="img"
-              alt={currentProduct.title}
-              image={currentProduct.image}
-              title={currentProduct.title}
+              alt={currentProduct && currentProduct.title}
+              image={currentProduct && currentProduct.image}
+              title={currentProduct && currentProduct.title}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {currentProduct.title}
+                {currentProduct && currentProduct.title}
               </Typography>
               <Typography
                 gutterBottom
@@ -101,13 +84,13 @@ function ProductList() {
                 color="textSecondary"
                 component="p"
               >
-                {currentProduct.description}
+                {currentProduct && currentProduct.description}
               </Typography>
               <Typography variant="h6" color="textSecondary" component="p">
-                Type: {currentProduct.category}
+                Type: {currentProduct && currentProduct.category}
               </Typography>
               <Typography variant="h5" color="textPrimary" component="p">
-                Price: ${currentProduct.price}
+                Price: ${currentProduct && currentProduct.price}
               </Typography>
             </CardContent>
           </CardActionArea>

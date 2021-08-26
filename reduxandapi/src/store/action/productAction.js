@@ -1,5 +1,6 @@
 import { ActionTypes } from "../ActionTypes";
 import axios from "axios";
+import { setLoaderValue } from "./loaderAction";
 
 export const setListofProduct = (productList) => ({
   type: ActionTypes.UPDATE_PRODUCT_LIST,
@@ -24,6 +25,7 @@ export const requestProductList = () => {
   return async (dispatch) => {
     const response = await axios.get("https://fakestoreapi.com/products");
     dispatch(setListofProduct(response.data));
+    dispatch(setLoaderValue(false));
   };
 };
 
@@ -33,6 +35,7 @@ export const requestProductDetails = (productId) => {
       `https://fakestoreapi.com/products/${productId}`
     );
     dispatch(setCurrentProduct(response.data));
+    dispatch(setLoaderValue(false));
   };
 };
 
@@ -42,7 +45,7 @@ export const requestDeleteProduct = (productId) => {
       `https://fakestoreapi.com/products/${productId}`
     );
     dispatch(deleteProduct(response));
-    console.log(response, "===response from delete");
+    dispatch(setLoaderValue(false));
   };
 };
 
@@ -59,6 +62,7 @@ export const updateProduct = (product) => {
       }
     );
     dispatch(editProduct(response));
-    console.log(response, "===response from update");
+    dispatch(setLoaderValue(false));
+    // console.log(response, "===response from update");
   };
 };

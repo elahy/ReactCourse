@@ -10,6 +10,7 @@ import ProductDetails from "./Components/ProductDetails";
 import Success from "./Components/Success";
 import UpdateProduct from "./Components/UpdateProduct";
 import Home from "./Components/Home";
+import DeleteProduct from "./Components/DeleteProduct";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -63,6 +64,9 @@ function App() {
               </Route>
               <Route path="/update/:id">
                 <UpdateProduct />
+              </Route>
+              <Route path="/delete/:id">
+                <DeleteProduct />
               </Route>
               <Route path="/PrivacyPolicy">
                 <Policy />

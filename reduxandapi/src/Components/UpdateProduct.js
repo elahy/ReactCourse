@@ -8,9 +8,11 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  editProduct,
   requestProductDetails,
   updateProduct,
 } from "../store/action/productAction";
+import { setLoaderValue } from "../store/action/loaderAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,22 +45,20 @@ const useStyles = makeStyles((theme) => ({
 
 function UpdateProduct() {
   const classes = useStyles();
-  const [loader, setLoader] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
   const pro = useParams();
   // console.log(pro.id, "===pro.id");
 
   useEffect(() => {
+    dispatch(setLoaderValue(true));
     dispatch(requestProductDetails(pro.id));
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
   }, [dispatch, pro.id]);
 
   const { currentProduct, productEdited } = useSelector(
     (store) => store.productStore
   );
+  const { loaderStore } = useSelector((store) => store);
   const [product, setProduct] = useState(currentProduct);
 
   const handleChange = (event) => {
@@ -70,22 +70,17 @@ function UpdateProduct() {
   };
 
   const handleSubmit = (e) => {
+    dispatch(setLoaderValue(true));
     dispatch(updateProduct(product));
-    setLoader(true);
-
-    setTimeout(() => {
-      if (productEdited.status === 200) {
-        history.push("/success");
-      } else {
-        console.log(productEdited.status, "Edit unsuccessfull");
-      }
-      setLoader(false);
-    }, 2000);
   };
+  if (productEdited && productEdited.status === 200) {
+    dispatch(editProduct(null));
+    history.push("/success");
+  }
 
   return (
     <>
-      {loader ? (
+      {loaderStore.loader ? (
         <Loader />
       ) : (
         <div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -12,6 +12,7 @@ import { Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { requestProductList } from "../store/action/productAction";
+import { setLoaderValue } from "../store/action/loaderAction";
 import Loader from "./Loader";
 
 const useStyles = makeStyles({
@@ -34,27 +35,23 @@ const useStyles = makeStyles({
 });
 
 function ProductList() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const history = useHistory();
-  const dispatch = useDispatch();
-  const [loader, setLoader] = useState(true);
+  const { productStore, loaderStore } = useSelector((store) => store);
+  const productList = productStore.productList;
 
   useEffect(() => {
+    dispatch(setLoaderValue(true));
     dispatch(requestProductList());
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
   }, [dispatch]);
-
-  const { productStore } = useSelector((store) => store);
-  const productList = productStore.productList;
 
   const buttonHanlder = (e) => {
     history.push(`/product/${e}`);
   };
   return (
     <>
-      {loader ? (
+      {loaderStore.loader ? (
         <Loader />
       ) : (
         <div>
