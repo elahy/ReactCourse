@@ -1,0 +1,9 @@
+.main {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  margin-top: 10%;
+  max-height: 40px;
+}

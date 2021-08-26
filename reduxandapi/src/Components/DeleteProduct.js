@@ -8,6 +8,7 @@ import {
 import { useHistory } from "react-router";
 import { Button } from "@material-ui/core";
 import Loader from "./Loader";
+import styles from "./Delete.module.css";
 
 function DeleteProduct() {
   const dispatch = useDispatch();
@@ -31,9 +32,16 @@ function DeleteProduct() {
       {loaderStore.loader ? (
         <Loader />
       ) : (
-        <Button variant="contained" color="primary" onClick={deleteHandler}>
-          Confrim Delete?
-        </Button>
+        <div className={styles.main}>
+          <Button
+            className={styles.button}
+            variant="contained"
+            color="primary"
+            onClick={deleteHandler}
+          >
+            Confrim Delete?
+          </Button>
+        </div>
       )}
     </>
   );
